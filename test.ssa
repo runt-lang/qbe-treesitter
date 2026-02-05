@@ -1,4 +1,4 @@
-# QBE IL example - fibonacci
+# QBE IL
 
 type :pair = { w, w }
 

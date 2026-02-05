@@ -33,7 +33,8 @@
         "ssa",
         "qbe"
       ],
-      "injection-regex": "qbe"
+      "injection-regex": "qbe",
+      "highlights": "queries/highlights.scm"
     }
   ]
 }
