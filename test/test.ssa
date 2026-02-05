@@ -1,0 +1,33 @@
+# QBE IL example - fibonacci
+
+type :pair = { w, w }
+
+data $fmt = { b "fib(%d) = %d\n", b 0 }
+
+export function w $fib(w %n) {
+@start
+    %c =w copy 0
+    %a =w copy 0
+    %b =w copy 1
+    jmp @loop
+@loop
+    %c1 =w phi @start %c, @body %c2
+    %a1 =w phi @start %a, @body %a2
+    %b1 =w phi @start %b, @body %b2
+    %done =w csltw %c1, %n
+    jnz %done, @body, @end
+@body
+    %a2 =w copy %b1
+    %b2 =w add %a1, %b1
+    %c2 =w add %c1, 1
+    jmp @loop
+@end
+    ret %a1
+}
+
+export function w $main() {
+@start
+    %r =w call $fib(w 10)
+    call $printf(l $fmt, ..., w 10, w %r)
+    ret 0
+}

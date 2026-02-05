@@ -1,0 +1,39 @@
+{
+  "name": "qbe-treesitter",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for QBE IL",
+  "main": "bindings/node",
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "qbe",
+    "compiler",
+    "ir"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/runt-lang/qbe-treesitter"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && tree-sitter build",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.qbe",
+      "file-types": [
+        "ssa",
+        "qbe"
+      ],
+      "injection-regex": "qbe"
+    }
+  ]
+}
